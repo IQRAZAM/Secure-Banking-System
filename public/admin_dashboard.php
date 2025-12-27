@@ -33,7 +33,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #e9f5ff; /* Light blue background */
+            background-color: #e9f5ff; 
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;

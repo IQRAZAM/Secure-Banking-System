@@ -8,7 +8,7 @@ $error = "";
 
 if(isset($_POST['login'])){
 
-    // 🔐 CSRF CHECK — MUST BE FIRST
+    //  CSRF CHECK 
     if (!verifyCSRFToken($_POST['csrf_token'] ?? '')) {
         die("Invalid CSRF token. Request blocked.");
     }
@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 
-    // 1️⃣ Check failed attempts in last 15 minutes
+    //  Check failed attempts in last 15 minutes
     $stmt = $conn->prepare("
         SELECT COUNT(*) AS fail_count
         FROM login_attempts
@@ -32,7 +32,7 @@ if(isset($_POST['login'])){
         $error = "Too many failed login attempts. Try again after 15 minutes.";
     } else {
 
-        // 2️⃣ Fetch user
+        // Fetch user
         $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,7 +67,7 @@ if(isset($_POST['login'])){
             exit;
         }
 
-        // ❌ Failed login → log it
+        //Failed login → log it
         $stmt = $conn->prepare("
             INSERT INTO login_attempts
             (user_id, email, ip_address, attempt_time, success)
@@ -93,7 +93,7 @@ if(isset($_POST['login'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #e9f5ff; /* Light blue background */
+            background-color: #e9f5ff; 
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;

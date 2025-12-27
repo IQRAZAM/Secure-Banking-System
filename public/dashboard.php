@@ -3,7 +3,7 @@ session_start();
 require '../config/db.php';
 require '../config/csrf.php';
 
-// Check if user is logged in
+//  To check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
@@ -54,7 +54,7 @@ $transactions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             margin-bottom: 15px;
         }
         table th {
-            background-color: #cfe2ff; /* Light blue header */
+            background-color: #cfe2ff; 
         }
         table td, table th {
             vertical-align: middle;

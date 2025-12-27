@@ -33,7 +33,7 @@ if(isset($_POST['register'])){
             } while($stmt_check->rowCount() > 0);
 
             // Insert account for the user
-            $initial_balance = 500; // Optional starting balance
+            $initial_balance = 500; 
             $stmt_acc = $conn->prepare("INSERT INTO accounts (user_id, account_number, balance, status) VALUES (?,?,?,?)");
             $stmt_acc->execute([$user_id, $account_number, $initial_balance, 'active']);
 
